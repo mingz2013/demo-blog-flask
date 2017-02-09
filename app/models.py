@@ -17,6 +17,7 @@ class Article(db.Model):
         self.title = title
         self.content = content
         self.create_at = datetime.utcnow()
+        self.image = ''
 
     def __repr__(self):
         return '<Article %r>' % self.title

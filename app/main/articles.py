@@ -6,6 +6,7 @@ from flask import render_template, redirect, url_for, request
 from app import db
 from . import main
 from ..models import Article
+from app.dbredis import RedisClient
 
 
 @main.route('/', methods=['GET'])
@@ -34,7 +35,7 @@ def post():
     else:
         title = request.form.get('title', '')
         content = request.form.get('content', '')
-        id = 0
+        id = RedisClient.get_article_id()
         article = Article(title=title, content=content, id=id)
         db.session.add(article)
         db.session.commit()
