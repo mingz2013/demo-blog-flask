@@ -12,9 +12,10 @@ from app.dbredis import RedisClient
 @main.route('/', methods=['GET'])
 @main.route('/<int:page>', methods=['GET'])
 def index(page=0):
-    articles = Article.query.all()
+    pagination = Article.query.order_by(Article.create_at.desc()).paginate(page, per_page=10, error_out=False)
+    articles = pagination.items
     print articles
-    return render_template('articles/index.html', articles=articles)
+    return render_template('articles/index.html', articles=articles, pagination=pagination)
 
 
 @main.route('/article/<int:id>', methods=['GET'])

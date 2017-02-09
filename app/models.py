@@ -7,7 +7,7 @@ from . import db
 
 class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), unique=True)
+    title = db.Column(db.String(50))
     content = db.Column(db.Text)
     image = db.Column(db.String(100))
     create_at = db.Column(db.DateTime)
