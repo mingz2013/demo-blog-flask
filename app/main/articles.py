@@ -23,10 +23,16 @@ def article(id):
 
 @main.route('/article/post', methods=['GET', 'POST'])
 def post():
-    id = request.args.get('id', '')
-    if id:
-        # post = Article.query.get_or_404(id)
-        article = None
-        return render_template('articles/edit.html', article=article)
+    if request.method == "GET":
+        id = request.args.get('id', '')
+        if id:
+            # post = Article.query.get_or_404(id)
+            article = None
+            return render_template('articles/edit.html', article=article)
+        else:
+            return render_template('articles/new.html')
     else:
-        return render_template('articles/new.html')
+        title = request.form.get('title', '')
+        content = request.form.get('content', '')
+        id = 0
+        return redirect(url_for('main.article', id=id))
