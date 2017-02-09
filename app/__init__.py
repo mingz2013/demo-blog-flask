@@ -27,6 +27,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 def create_app(config_mode):
     from flask import Flask
     app = Flask(__name__)

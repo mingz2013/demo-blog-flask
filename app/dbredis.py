@@ -41,3 +41,16 @@ redis_client = redis.StrictRedis(REDIS_HOST, REDIS_PORT, db=0)
 class RedisClient():
     def __init__(self):
         pass
+
+    @staticmethod
+    def init_redis():
+        redis_client.set('article_id', 0)
+        redis_client.set('comment_id', 0)
+
+    @staticmethod
+    def get_article_id():
+        return redis_client.incr('article_id')
+
+    @staticmethod
+    def get_comment_id():
+        return redis_client.incr('comment_id')

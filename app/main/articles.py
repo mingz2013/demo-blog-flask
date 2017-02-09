@@ -12,6 +12,7 @@ from ..models import Article
 @main.route('/<int:page>', methods=['GET'])
 def index(page=0):
     articles = Article.query.all()
+    print articles
     return render_template('articles/index.html', articles=articles)
 
 
