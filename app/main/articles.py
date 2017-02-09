@@ -10,14 +10,15 @@ from ..models import Article, Comment
 
 
 @main.route('/', methods=['GET'])
-@main.route('/<int:id>', methods=['GET'])
-def index(id):
-    return render_template('articles/index.html')
+@main.route('/<int:page>', methods=['GET'])
+def index(page=None):
+    return render_template('articles/index.html', articles=[])
 
 
 @main.route('/article/<int:id>', methods=['GET'])
 def article(id):
-    return render_template('articles/detail.html', posts=[post])
+    article = None
+    return render_template('articles/detail.html', article=article)
 
 
 @main.route('/article/post', methods=['GET', 'POST'])
