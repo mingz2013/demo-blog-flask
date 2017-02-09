@@ -5,6 +5,7 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, request
 
 from . import main
+from app import db
 from ..models import Article, Comment
 
 
@@ -34,4 +35,7 @@ def post():
         title = request.form.get('title', '')
         content = request.form.get('content', '')
         id = 0
+        article = Article(title=title, content=content, id=id)
+        db.session.add(article)
+        db.session.commit()
         return redirect(url_for('main.article', id=id))

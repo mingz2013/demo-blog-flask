@@ -1,37 +1,38 @@
 __author__ = 'zhaojm'
 
-from sqlalchemy import Column, Integer, String, Text, DateTime
+import datetime
 
-from app.database import Base
+from . import db
 
 
-class Article(Base):
-    __tablename__ = 'articles'
-    id = Column(Integer, primary_key=True)
-    title = Column(String(50), unique=True)
-    content = Column(Text)
-    image = Column(String(100))
-    create_at = Column(DateTime)
+class Article(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), unique=True)
+    content = db.Column(db.Text)
+    image = db.Column(db.String(100))
+    create_at = db.Column(db.DateTime)
 
-    def __init__(self, title=None, description=None):
+    def __init__(self, id=None, title=None, content=None):
+        self.id = id
         self.title = title
-        self.description = description
-
-        # def __repr__(self):
-        #     return '<Activity %r' % (self.title)
-
-
-class Comment(Base):
-    __tablename__ = 'comments'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50))
-    comment = Column(Text)
-    create_at = Column(DateTime)
-    article_id = Column(Integer)
-
-    def __init__(self, name=None, email=None):
-        self.name = name
-        self.email = email
+        self.content = content
+        self.create_at = datetime.time()
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+        return '<Article %r>' % self.title
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    comment = db.Column(db.Text)
+    create_at = db.Column(db.DateTime)
+    article_id = db.Column(db.Integer)
+
+    def __init__(self, id=None, name=None, comment=None):
+        self.id = id
+        self.name = name
+        self.comment = comment
+
+    def __repr__(self):
+        return '<Comment %r>' % self.comment

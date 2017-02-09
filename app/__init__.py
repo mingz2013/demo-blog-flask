@@ -23,6 +23,10 @@ def register_logging(app):
     pass
 
 
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
 def create_app(config_mode):
     from flask import Flask
     app = Flask(__name__)
@@ -32,6 +36,7 @@ def create_app(config_mode):
     app.config_mode = config_mode
 
     register_logging(app)
+    db.init_app(app)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
