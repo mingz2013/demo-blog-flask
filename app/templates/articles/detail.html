@@ -1,6 +1,6 @@
 {% extends 'articles/base.html' %}
 
-{% block title %}detail{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 
 {% block edit %}<a class="blog-nav-item" href="{{ url_for('main.post', id=article.id) }}">Edit</a>{% endblock %}
