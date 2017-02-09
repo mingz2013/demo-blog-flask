@@ -37,10 +37,10 @@ def create_app(config_mode):
     app.config_mode = config_mode
 
     db.init_app(app)
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
 
     register_logging(app)
-    # register_routes(app)
+
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
     return app

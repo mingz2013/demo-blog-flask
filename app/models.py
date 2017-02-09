@@ -3,9 +3,6 @@ __author__ = 'zhaojm'
 from . import db
 
 
-# - Article: id,title,content,image,create_at
-# - Comment: id,name,comment,create_at,article_id
-
 class Article(db.Model):
     __tablename__ = 'articles'
     id = db.Column(db.Integer, primary_key=True)
