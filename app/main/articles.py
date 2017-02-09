@@ -23,6 +23,10 @@ def article(id):
 
 @main.route('/article/post', methods=['GET', 'POST'])
 def post():
-    id = request.args.id
-    post = Article.query.get_or_404(id)
-    return render_template('post.html', posts=[post])
+    id = request.args.get('id', '')
+    if id:
+        # post = Article.query.get_or_404(id)
+        article = None
+        return render_template('articles/edit.html', article=article)
+    else:
+        return render_template('articles/new.html')
