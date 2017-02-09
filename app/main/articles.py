@@ -25,8 +25,8 @@ def article(id):
 
 @main.route('/article/post', methods=['GET', 'POST'])
 def post():
+    id = request.args.get('id', '')
     if request.method == "GET":
-        id = request.args.get('id', '')
         if id:
             article = Article.query.filter_by(id=id).first()
             return render_template('articles/edit.html', article=article)
@@ -35,8 +35,15 @@ def post():
     else:
         title = request.form.get('title', '')
         content = request.form.get('content', '')
-        id = RedisClient.get_article_id()
-        article = Article(title=title, content=content, id=id)
-        db.session.add(article)
-        db.session.commit()
+        if id:
+            article = Article.query.filter_by(id=id).first()
+            article.title = title
+            article.content = content
+            db.session.commit()
+        else:
+            id = RedisClient.get_article_id()
+            article = Article(title=title, content=content, id=id)
+            db.session.add(article)
+            db.session.commit()
+
         return redirect(url_for('main.article', id=id))
