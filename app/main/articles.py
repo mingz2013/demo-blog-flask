@@ -11,7 +11,7 @@ from ..models import Article, Comment
 
 @main.route('/', methods=['GET'])
 @main.route('/<int:page>', methods=['GET'])
-def index(page=None):
+def index(page=0):
     return render_template('articles/index.html', articles=[])
 
 
