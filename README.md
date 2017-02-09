@@ -7,3 +7,9 @@ cd static/articles/
 npm install
 cd ../..
 
+sh scripts/init_redis.sh
+sh scripts/init_db.sh
+
+sh scripts/run_test.sh
+
+sh scripts/run_uwsgi.sh
