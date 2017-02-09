@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, request
 
 from app import db
 from . import main
-from ..models import Article
+from ..models import Article, Comment
 from app.dbredis import RedisClient
 
 
@@ -20,7 +20,8 @@ def index(page=0):
 @main.route('/article/<int:id>', methods=['GET'])
 def article(id):
     article = Article.query.filter_by(id=id).first()
-    return render_template('articles/detail.html', article=article)
+    comments = Comment.query.filter_by(article_id=id)
+    return render_template('articles/detail.html', article=article, comments=comments)
 
 
 @main.route('/article/post', methods=['GET', 'POST'])
@@ -47,3 +48,14 @@ def post():
             db.session.commit()
 
         return redirect(url_for('main.article', id=id))
+
+
+@main.route('/article/comment/<int:article_id>', methods=['POST'])
+def comment(article_id):
+    name = request.form.get('name', '')
+    comment = request.form.get('comment', '')
+    id = RedisClient.get_comment_id()
+    c = Comment(id=id, name=name, comment=comment, article_id=article_id)
+    db.session.add(c)
+    db.session.commit()
+    return redirect(url_for('main.article', id=article_id))
