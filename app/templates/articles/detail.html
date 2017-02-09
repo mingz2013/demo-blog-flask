@@ -1,4 +1,4 @@
-{% extends 'home/blog/base.html' %}
+{% extends 'articles/base.html' %}
 
 {% block title %}detail{% endblock %}
 
@@ -7,7 +7,7 @@
 
         <div class="blog-post">
             <h2 class="blog-post-title">{{ article.title }}</h2>
-            <p class="blog-post-meta">{{ article.create_time }} by <a href="#">{{ article.author }}</a></p>
+            <p class="blog-post-meta">{{ article.create_time }}</p>
 
             {{ article.content }}
 
