@@ -11,7 +11,7 @@ from app.dbredis import RedisClient
 
 @main.route('/', methods=['GET'])
 @main.route('/<int:page>', methods=['GET'])
-def index(page=0):
+def index(page=1):
     pagination = Article.query.order_by(Article.create_at.desc()).paginate(page, per_page=10, error_out=False)
     articles = pagination.items
     print articles
