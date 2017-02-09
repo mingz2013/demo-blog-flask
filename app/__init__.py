@@ -23,11 +23,6 @@ def register_logging(app):
     pass
 
 
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
-
-
 def create_app(config_mode):
     from flask import Flask
     app = Flask(__name__)
@@ -35,8 +30,6 @@ def create_app(config_mode):
     app.config.from_object(config_dict[config_mode])
     config_dict[config_mode].init_app(app)
     app.config_mode = config_mode
-
-    db.init_app(app)
 
     register_logging(app)
 

@@ -1,15 +1,17 @@
 __author__ = 'zhaojm'
 
-from . import db
+from sqlalchemy import Column, Integer, String, Text, DateTime
+
+from app.database import Base
 
 
-class Article(db.Model):
+class Article(Base):
     __tablename__ = 'articles'
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), unique=True)
-    content = db.Column(db.Text)
-    image = db.Column(db.String(100))
-    create_at = db.Column(db.DateTime)
+    id = Column(Integer, primary_key=True)
+    title = Column(String(50), unique=True)
+    content = Column(Text)
+    image = Column(String(100))
+    create_at = Column(DateTime)
 
     def __init__(self, title=None, description=None):
         self.title = title
@@ -19,13 +21,13 @@ class Article(db.Model):
         #     return '<Activity %r' % (self.title)
 
 
-class Comment(db.Model):
+class Comment(Base):
     __tablename__ = 'comments'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    comment = db.Column(db.Text)
-    create_at = db.Column(db.DateTime)
-    article_id = db.Column(db.Integer)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50))
+    comment = Column(Text)
+    create_at = Column(DateTime)
+    article_id = Column(Integer)
 
     def __init__(self, name=None, email=None):
         self.name = name
