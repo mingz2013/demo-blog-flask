@@ -1,0 +1,18 @@
+{% extends 'home/blog/base.html' %}
+
+{% block title %}detail{% endblock %}
+
+{% block main %}
+    <div class="col-sm-8 blog-main">
+
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{ article.title }}</h2>
+            <p class="blog-post-meta">{{ article.create_time }} by <a href="#">{{ article.author }}</a></p>
+
+            {{ article.content }}
+
+        </div><!-- /.blog-post -->
+
+
+    </div><!-- /.blog-main -->
+{% endblock %}
