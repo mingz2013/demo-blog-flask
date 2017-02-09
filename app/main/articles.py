@@ -1,23 +1,23 @@
 # -*- coding:utf-8 -*-
 __author__ = 'zhaojm'
 
-from datetime import datetime
-from flask import render_template, session, redirect, url_for, request
+from flask import render_template, redirect, url_for, request
 
-from . import main
 from app import db
-from ..models import Article, Comment
+from . import main
+from ..models import Article
 
 
 @main.route('/', methods=['GET'])
 @main.route('/<int:page>', methods=['GET'])
 def index(page=0):
-    return render_template('articles/index.html', articles=[])
+    articles = Article.query.all()
+    return render_template('articles/index.html', articles=articles)
 
 
 @main.route('/article/<int:id>', methods=['GET'])
 def article(id):
-    article = None
+    article = Article.query.filter_by(id=id).first()
     return render_template('articles/detail.html', article=article)
 
 
@@ -26,8 +26,7 @@ def post():
     if request.method == "GET":
         id = request.args.get('id', '')
         if id:
-            # post = Article.query.get_or_404(id)
-            article = None
+            article = Article.query.filter_by(id=id).first()
             return render_template('articles/edit.html', article=article)
         else:
             return render_template('articles/new.html')
