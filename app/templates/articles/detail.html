@@ -18,7 +18,7 @@
             <script src="{{ url_for('static', filename='ueditor/ueditor.parse.js') }}"></script>
 
             <script type="text/javascript">
-                $('#content').html("{{ article.content }}");
+                $('#content').append($('<div/>').html("{{ article.content }}").text());
                 uParse('#content', {
                     rootPath: '/static/ueditor/'
                 })
