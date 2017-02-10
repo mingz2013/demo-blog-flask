@@ -7,11 +7,11 @@
 
 ### install nodejs库
 
-`cd static/articles/`
+`cd app/static/articles/`
 
 `npm install`
 
-`cd ../..`
+`cd ../../..`
 
 ### install python库
 
