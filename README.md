@@ -1,9 +1,20 @@
 # demo.blog
 
+
+### 创建所需目录
+
+`mkdir -p /home/apps/`
+
 ### clone项目
+
+`cd /home/apps/`
+
 `git clone https://github.com/mingz2013/demo.blog`
 
 `cd demo.blog`
+
+### 创建所需目录
+`mkdir logs`
 
 ### install nodejs库
 
@@ -16,6 +27,7 @@
 ### install python库
 
 `pip install flask flask-sqlalchemy redis uwsgi`
+
 
 ### 初始化redis
 
