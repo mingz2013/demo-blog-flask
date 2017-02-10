@@ -5,6 +5,7 @@
           rel="stylesheet">
     <link href="{{ url_for('static', filename = 'articles/css/blog.css') }}"
           rel="stylesheet">
+    <script src="{{ url_for('static', filename = 'articles/node_modules/jquery/dist/jquery.min.js') }}"></script>
     {#    <script type="text/javascript" src="{{ url_for('static', filename = 'blog/dist/bundle.js') }}"></script>#}
 {% endblock %}
 
@@ -46,7 +47,7 @@
     {% endblock %}
 
     {% block bottom_script %}
-        <script src="{{ url_for('static', filename = 'articles/node_modules/jquery/dist/jquery.min.js') }}"></script>
+
         <script src="{{ url_for('static', filename = 'articles/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
     {% endblock %}

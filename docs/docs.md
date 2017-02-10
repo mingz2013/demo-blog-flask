@@ -1,0 +1,3 @@
+- ueditor: http://fex.baidu.com/ueditor/
+- flask: http://docs.jinkan.org/docs/flask/
+- flask-sqlalchemy: http://flask-sqlalchemy.pocoo.org/2.1/

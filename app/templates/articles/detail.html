@@ -12,7 +12,18 @@
             <h2 class="blog-post-title">{{ article.title }}</h2>
             <p class="blog-post-meta">{{ article.create_time }}</p>
 
-            {{ article.content }}
+            <div id="content">
+
+            </div>
+            <script src="{{ url_for('static', filename='ueditor/ueditor.parse.js') }}"></script>
+
+            <script type="text/javascript">
+                $('#content').html("{{ article.content }}");
+                uParse('#content', {
+                    rootPath: '/static/ueditor/'
+                })
+            </script>
+
 
         </div><!-- /.blog-post -->
 
