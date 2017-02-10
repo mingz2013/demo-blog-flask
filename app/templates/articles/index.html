@@ -14,14 +14,14 @@
                         href="{{ url_for('main.article', id=article.id) }}">{{ article.title }}</a></h2>
                 <p class="blog-post-meta">{{ article.create_at }}</p>
 
-                <div id="content"></div>
-
-                <script type="text/javascript">
-                    $('#content').append($('<div/>').html("{{ article.content }}").text());
+                {#                <div id="content"></div>#}
+                {##}
+                {#                <script type="text/javascript">#}
+                {#                    $('#content').append($('<div/>').html("{{ article.content }}").text());#}
                     {#                uParse('#content', {#}
                     {#                    rootPath: '/static/ueditor/'#}
                     {#                })#}
-                </script>
+                {#                </script>#}
 
             </div><!-- /.blog-post -->
 

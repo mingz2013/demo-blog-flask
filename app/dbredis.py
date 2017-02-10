@@ -44,13 +44,13 @@ class RedisClient():
 
     @staticmethod
     def init_redis():
-        redis_client.set('article_id', 0)
-        redis_client.set('comment_id', 0)
+        redis_client.set('demo.blog.article_id', 0)
+        redis_client.set('demo.blog.comment_id', 0)
 
     @staticmethod
     def get_article_id():
-        return redis_client.incr('article_id')
+        return redis_client.incr('demo.blog.article_id')
 
     @staticmethod
     def get_comment_id():
-        return redis_client.incr('comment_id')
+        return redis_client.incr('demo.blog.comment_id')
