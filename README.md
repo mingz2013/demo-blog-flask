@@ -1,6 +1,22 @@
 # demo.blog
 
 
+
+## 环境
+
+- centos7
+- nodejs
+- bootstrap + jquery + ueditor
+- python2
+- flask + flask-sqlalchemy + uwsgi
+- nginx
+- redis
+- sqlite
+
+---
+
+## 操作步骤
+
 ### 创建所需目录
 
 `mkdir -p /home/apps/`
@@ -49,7 +65,7 @@
 
 ---
 
-### TODOLIST
+## TODOLIST
 
 
 优化
