@@ -10,6 +10,8 @@ from . import articles, errors
 
 @main.route('/test_post', methods=['POST'])
 def test_post():
-    print "test_post..."
+    print "test_post..form."
     print request.form
+    print "test_post..data."
+    print request.data
     return "ok"
