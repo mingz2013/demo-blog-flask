@@ -14,4 +14,6 @@ def test_post():
     print request.form
     print "test_post..data."
     print request.data
+    print "test_post..json."
+    print request.json
     return "ok"
